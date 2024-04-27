@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-const ButtonsPage = () => {
+
+export default function Home() {
     return(
         <div>
-            <Button>Primary</Button>
+            hei
         </div>
     )
 }
-
-export default ButtonsPage
