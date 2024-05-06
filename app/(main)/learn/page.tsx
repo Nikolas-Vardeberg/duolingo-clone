@@ -1,15 +1,22 @@
 import { FeedWrapper } from "@/components/feed-wrapper"
 import { StickyWrapper } from "@/components/sticky-wrapper"
+import { Header } from "./header"
+import { UserProgress } from "@/components/user-progress"
 
 
 const page = () => {
     return(
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
-                My Sticky sidebar
+                <UserProgress
+                    activeCource={{ title: "Spanish", imageSrc: "/es.svg" }}
+                    hearts={5}
+                    points={100}
+                    hasActiveSubscription={false}
+                />
             </StickyWrapper>
             <FeedWrapper>
-                Feed
+                <Header title="Spanish"/>
             </FeedWrapper>
         </div>
     )
