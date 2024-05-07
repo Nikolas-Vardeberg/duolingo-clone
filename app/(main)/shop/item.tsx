@@ -90,9 +90,9 @@ export const Items = ({
                 </div>
                 <Button
                     onClick={onUpgrade}
-                    disabled={pending || hasActiceSubscription}
+                    disabled={pending}
                 >
-                    {hasActiceSubscription ? "active" : "upgrade"}
+                    {hasActiceSubscription ? "settings" : "upgrade"}
                 </Button>
             </div>
         </ul>
