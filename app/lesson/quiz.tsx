@@ -8,6 +8,7 @@ import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
+import { reduceHearts } from "@/actions/user-progress";
 
 type Props = {
     initialLessonId: number
@@ -84,6 +85,23 @@ export const Quiz = ({initialPercentage, initialHearts, initialLessonId, initial
                 })
                 .catch(() => toast.error("Something went wrong please try again later."))
             })
+        } else {
+            startTransition(() => {
+                reduceHearts(challenge.id) 
+                .then((response) => {
+                    if (response?.error === "hearts") {
+                        console.log("Missing hearts");
+                        return;
+                    }
+
+                    setStatus("wrong")
+
+                    if(!response?.error) {
+                        setHearts((prev) => Math.max(prev - 1,0));
+                    }
+                })
+                .catch(() => toast.error("Something went wrong. Please try again."))
+            })
         }
     }
 
@@ -114,7 +132,7 @@ export const Quiz = ({initialPercentage, initialHearts, initialLessonId, initial
                                 onSelect={onSelect}
                                 status={status}
                                 selectedOption={selectedOption}
-                                disabled={false}
+                                disabled={pending}
                                 type={challenge.type}
                             />
                         </div>
@@ -122,7 +140,7 @@ export const Quiz = ({initialPercentage, initialHearts, initialLessonId, initial
                 </div>
             </div>
             <Footer 
-                disabled={!selectedOption}
+                disabled={pending || !selectedOption}
                 status={status}
                 onCheck={onContinue}
             />
