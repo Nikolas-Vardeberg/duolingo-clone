@@ -11,7 +11,7 @@ type Props = {
         completed: boolean;
     })[];
     activeLesson: typeof lessons.$inferSelect & {
-        unit: typeof units.$inferSelect;
+        units: typeof units.$inferSelect;
     } | undefined;
     activeLessonPercentage: number;
 };
