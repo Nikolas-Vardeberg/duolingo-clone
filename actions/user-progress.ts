@@ -2,13 +2,13 @@
 
 import db from "@/db/drizzle";
 import { revalidatePath } from "next/cache";
-import { getCourseById, getUserProgress } from "@/db/queries";
+import { getCourseById, getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
+import { POINTS_TO_REFILL } from "@/constants";
 
-const POINTS_TO_REFILL = 50;
 
 export const upsertUserProgress = async (courseId: number) => {
     const { userId} = await auth();
@@ -24,10 +24,9 @@ export const upsertUserProgress = async (courseId: number) => {
         throw new Error("Course not found!");
     }
 
-    //ENABLE ONCE UNITS AND LESSONS ARE ADDED
-    //if(!course.units.length || !course.units[0].lessons.length) {
-    //    throw new Error("Course is Empyu")
-    //}
+    if(!course.units.length || !course.units[0].lessons.length) {
+        throw new Error("Course is Empyu")
+    }
 
     const existingUserProgress = await getUserProgress();
 
@@ -108,6 +107,7 @@ export const reduceHearts = async (challengeId: number) => {
 
 export const refillHearts = async () => {
     const currentUserProgress = await getUserProgress();
+    const userSubscription = await getUserSubscription();
 
     if (!currentUserProgress) {
         throw new Error("user progress not found")
@@ -115,6 +115,10 @@ export const refillHearts = async () => {
 
     if(currentUserProgress.hearts === 5) {
         throw new Error("Hearts are already full");
+    }
+
+    if (userSubscription?.isActive) {
+        return { error: "subscription"}
     }
 
     if (currentUserProgress.points < POINTS_TO_REFILL) {

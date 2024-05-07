@@ -1,6 +1,6 @@
 "use client"
 
-import { challengeOptions, challenges } from "@/db/schema"
+import { challengeOptions, challenges, userSubscription } from "@/db/schema"
 import { useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
@@ -25,7 +25,9 @@ type Props = {
     })[];
     initialHearts: number;
     initialPercentage: number;
-    userSubscription: any;
+    userSubscription: typeof userSubscription.$inferSelect & {
+        isActive: boolean;
+    } | null;
 }
 
 export const Quiz = ({initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription}: Props) => {
@@ -197,7 +199,7 @@ export const Quiz = ({initialPercentage, initialHearts, initialLessonId, initial
             <Header 
                 hearts={hearts}
                 percentage={percentage}
-                hasActiveSubscription={!!userSubscription?.active}
+                hasActiveSubscription={!!userSubscription?.isActive}
             />
             <div className="flex-1">
                 <div className="h-full flex items-center justify-center">
