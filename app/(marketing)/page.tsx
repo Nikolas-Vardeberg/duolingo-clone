@@ -12,7 +12,7 @@ export default function Home() {
                 <Image src="/hero.svg" fill alt="Hero"/>
             </div>
             <div className="flex flex-col items-center gap-y-8">
-                <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">Learn, practive, and master new languages with Lingo.</h1>
+                <h1 className="text-xl lg:text-3xl font-bold text-neutral-700 max-w-[480px] text-center">Learn, practive, and master new languages with nett<span className="text-green-500">vett</span>.</h1>
 
                 <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
                     <ClerkLoading>
@@ -36,11 +36,11 @@ export default function Home() {
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
-                            <Button size="lg" variant="secondary" className="w-full">
-                                <Link href="/learn">
-                                    Continue Learning
-                                </Link>
-                            </Button>
+                            <Link href="/learn" className="w-full">
+                                <Button size="lg" variant="secondary" className="w-full">
+                                        Continue Learning
+                                </Button>
+                            </Link>
                         </SignedIn>
                     </ClerkLoaded>
                 </div>

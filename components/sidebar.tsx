@@ -19,7 +19,7 @@ export const Sidebar = ({className}: Props) => {
                     src="/mascot.svg" height={40} width={40}
                     alt="Mascot"
                 />
-                <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">Nettvett</h1>
+                <h1 className="text-2xl font-extrabold text-black tracking-wide">Nett<span className="text-green-500">vett</span></h1>
             </div>
             </Link>
             <div className="flex flex-col gap-y-2 flex-1">

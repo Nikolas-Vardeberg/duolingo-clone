@@ -24,32 +24,32 @@ const main = async () => {
     await db.insert(schema.courses).values([
       {
         id: 1,
-        title: "Spanish",
-        imageSrc: "/es.svg",
+        title: "Nettikett",
+        imageSrc: "/mascot.svg",
       },
       {
         id: 2,
-        title: "Italian",
-        imageSrc: "/it.svg",
+        title: "Cookies",
+        imageSrc: "/woman.svg",
       },
       {
         id: 3,
-        title: "French",
-        imageSrc: "/fr.svg",
+        title: "Trygg Vaner",
+        imageSrc: "/robot.svg",
       },
       {
         id: 4,
-        title: "Croatian",
-        imageSrc: "/hr.svg",
+        title: "VPN",
+        imageSrc: "/man.svg",
       },
     ]);
 
     await db.insert(schema.units).values([
       {
         id: 1,
-        courseId: 1, // Spanish
+        courseId: 1, 
         title: "Unit 1",
-        description: "Learn the basics of Spanish",
+        description: "Learn the basics of Nettikett",
         order: 1,
       }
     ]);
@@ -93,21 +93,21 @@ const main = async () => {
         lessonId: 1, // Nouns
         type: "SELECT",
         order: 1,
-        question: 'Which one of these is the "the man"?',
+        question: 'Hva er en vanlig årsak til nettleserens "404 Not Found" feilmelding?',
       },
       {
         id: 2,
         lessonId: 1, // Nouns
         type: "ASSIST",
         order: 2,
-        question: '"the man"',
+        question: '"Hvilket nettverksprotokoll brukes vanligvis for å sende e-post?"',
       },
       {
         id: 3,
         lessonId: 1, // Nouns
         type: "SELECT",
         order: 3,
-        question: 'Which one of these is the "the robot"?',
+        question: 'Hva er en vanlig beskyttelse mot nettbaserte angrep?',
       },
     ]);
 
@@ -116,22 +116,22 @@ const main = async () => {
         challengeId: 1, // Which one of these is "the man"?
         imageSrc: "/man.svg",
         correct: true,
-        text: "el hombre",
-        audioSrc: "/es_man.mp3",
+        text: "Feil URL-inntasting",
+        audioSrc: "/feilurl.mp3",
       },
       {
         challengeId: 1,
         imageSrc: "/woman.svg",
         correct: false,
-        text: "la mujer",
-        audioSrc: "/es_woman.mp3",
+        text: "Serverfeil",
+        audioSrc: "/svf.mp3",
       },
       {
         challengeId: 1,
         imageSrc: "/robot.svg",
         correct: false,
-        text: "el robot",
-        audioSrc: "/es_robot.mp3",
+        text: "Dårlig internettforbindelse",
+        audioSrc: "/dbi.mp3",
       },
     ]);
 
@@ -139,20 +139,20 @@ const main = async () => {
       {
         challengeId: 2, // "the man"?
         correct: true,
-        text: "el hombre",
-        audioSrc: "/es_man.mp3",
+        text: "HTTP",
+        audioSrc: "/http.mp3",
       },
       {
         challengeId: 2,
         correct: false,
-        text: "la mujer",
-        audioSrc: "/es_woman.mp3",
+        text: "SMTP",
+        audioSrc: "/smpt.mp3",
       },
       {
         challengeId: 2,
         correct: false,
-        text: "el robot",
-        audioSrc: "/es_robot.mp3",
+        text: "FTP",
+        audioSrc: "/ftpp.mp3",
       },
     ]);
 
@@ -161,22 +161,22 @@ const main = async () => {
         challengeId: 3, // Which one of these is the "the robot"?
         imageSrc: "/man.svg",
         correct: false,
-        text: "el hombre",
-        audioSrc: "/es_man.mp3",
+        text: "Brannmur",
+        audioSrc: "/brannmur.mp3",
       },
       {
         challengeId: 3,
         imageSrc: "/woman.svg",
         correct: false,
-        text: "la mujer",
-        audioSrc: "/es_woman.mp3",
+        text: "Antivirusprogram",
+        audioSrc: "/antivirus.mp3",
       },
       {
         challengeId: 3,
         imageSrc: "/robot.svg",
         correct: true,
-        text: "el robot",
-        audioSrc: "/es_robot.mp3",
+        text: "Malwarebytes",
+        audioSrc: "/malware.mp3",
       },
     ]);
 
@@ -193,14 +193,14 @@ const main = async () => {
         lessonId: 2, // Verbs
         type: "ASSIST",
         order: 2,
-        question: '"the man"',
+        question: '"Hvilket nettverksprotokoll brukes vanligvis for å sende e-post?"',
       },
       {
         id: 6,
         lessonId: 2, // Verbs
         type: "SELECT",
         order: 3,
-        question: 'Which one of these is the "the robot"?',
+        question: 'Hva er en vanlig beskyttelse mot nettbaserte angrep?',
       },
     ]);
     console.log("Seeding finished");
