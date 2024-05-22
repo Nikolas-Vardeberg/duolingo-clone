@@ -24,7 +24,7 @@ const main = async () => {
     await db.insert(schema.courses).values([
       {
         id: 1,
-        title: "Nettikett",
+        title: "Nettvett Regler",
         imageSrc: "/mascot.svg",
       },
       {
@@ -93,21 +93,21 @@ const main = async () => {
         lessonId: 1, // Nouns
         type: "SELECT",
         order: 1,
-        question: 'Hva er en vanlig årsak til nettleserens "404 Not Found" feilmelding?',
+        question: '"Hva bør du gjøre for å sikre brukerkontoer?"',
       },
       {
         id: 2,
         lessonId: 1, // Nouns
         type: "ASSIST",
         order: 2,
-        question: '"Hvilket nettverksprotokoll brukes vanligvis for å sende e-post?"',
+        question: '"Hvordan bør du håndtere e-poster for å unngå svindel?"',
       },
       {
         id: 3,
         lessonId: 1, // Nouns
         type: "SELECT",
         order: 3,
-        question: 'Hva er en vanlig beskyttelse mot nettbaserte angrep?',
+        question: 'Hva er en god praksis for å beskytte filer?',
       },
     ]);
 
@@ -115,22 +115,22 @@ const main = async () => {
       {
         challengeId: 1, // Which one of these is "the man"?
         imageSrc: "/man.svg",
-        correct: true,
-        text: "Feil URL-inntasting",
+        correct: false,
+        text: "Samme passord",
         audioSrc: "/feilurl.mp3",
       },
       {
         challengeId: 1,
         imageSrc: "/woman.svg",
-        correct: false,
-        text: "Serverfeil",
+        correct: true,
+        text: "2-trinns bekreftelse",
         audioSrc: "/svf.mp3",
       },
       {
         challengeId: 1,
         imageSrc: "/robot.svg",
         correct: false,
-        text: "Dårlig internettforbindelse",
+        text: "Post-it-lapper",
         audioSrc: "/dbi.mp3",
       },
     ]);
@@ -138,20 +138,20 @@ const main = async () => {
     await db.insert(schema.challengeOptions).values([
       {
         challengeId: 2, // "the man"?
-        correct: true,
-        text: "HTTP",
+        correct: false,
+        text: "Klikke på alle lenker",
         audioSrc: "/http.mp3",
       },
       {
         challengeId: 2,
         correct: false,
-        text: "SMTP",
+        text: "Legge inn personopplysninger",
         audioSrc: "/smpt.mp3",
       },
       {
         challengeId: 2,
-        correct: false,
-        text: "FTP",
+        correct: true,
+        text: "Vurdere avsenderen",
         audioSrc: "/ftpp.mp3",
       },
     ]);
@@ -161,21 +161,21 @@ const main = async () => {
         challengeId: 3, // Which one of these is the "the robot"?
         imageSrc: "/man.svg",
         correct: false,
-        text: "Brannmur",
+        text: "Sikkerhetskopiere sjelden",
         audioSrc: "/brannmur.mp3",
       },
       {
         challengeId: 3,
         imageSrc: "/woman.svg",
-        correct: false,
-        text: "Antivirusprogram",
+        correct: true,
+        text: "Sikkerhetskopiere jevnlig",
         audioSrc: "/antivirus.mp3",
       },
       {
         challengeId: 3,
         imageSrc: "/robot.svg",
-        correct: true,
-        text: "Malwarebytes",
+        correct: false,
+        text: "Aldri oppdatere kopier",
         audioSrc: "/malware.mp3",
       },
     ]);
